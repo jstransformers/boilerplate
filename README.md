@@ -1,3 +1,5 @@
+# [See the Boilerplate Wiki for usage instructions](http://github.com/jstransformers/boilerplate/wiki)
+
 # jstransformer-foo
 
 [Foo](http://example.com) support for [JSTransformers](http://github.com/jstransformers).
