@@ -1,14 +1,3 @@
-# boilerplates
-
-This is a boilerplate for new transformers.
-
-What you need to do:
-
-1. Add your name to `LICENSE.md` and `package.json`
-2. Activate Travis CI and Coveralls.
-3. Update module name in `package.json` and `README.md`
-4. Let the fun begin!
-
 # jstransformer-foo
 
 [Foo](http://example.com) support for [JSTransformers](http://github.com/jstransformers).
