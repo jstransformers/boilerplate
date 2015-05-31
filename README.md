@@ -1,4 +1,9 @@
-# [See the Boilerplate Wiki for usage instructions](http://github.com/jstransformers/boilerplate/wiki)
+# JSTransformer Boilerplate
+
+Use JSTransformer Boilerplate to create and update transformers.
+
+1. Visit [the Boilerplate Wiki](https://github.com/jstransformers/boilerplate/wiki) on how to get started
+2. Remove this top notice from any transformers
 
 # jstransformer-foo
 
