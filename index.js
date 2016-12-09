@@ -4,6 +4,6 @@ exports.name = 'foo'
 exports.inputFormats = ['foo', 'foobar']
 exports.outputFormat = 'html'
 
-exports.render = function (str, options) {
+exports.render = function (str) {
   return str
 }
