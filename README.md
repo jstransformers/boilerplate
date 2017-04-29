@@ -1,5 +1,7 @@
 # JSTransformer Boilerplate
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jstransformers/boilerplate.svg)](https://greenkeeper.io/)
+
 Use JSTransformer Boilerplate to create and update transformers.
 
 1. Visit [the Boilerplate Wiki](https://github.com/jstransformers/boilerplate/wiki) on how to get started
