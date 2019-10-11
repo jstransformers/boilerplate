@@ -16,13 +16,13 @@ workflows:
     jobs:
       - unit-tests:
           <<: *not_master
-          version: 8
+          version: "8"
       - unit-tests:
           <<: *not_master
-          version: 10
+          version: "10"
       - unit-tests:
           <<: *not_master
-          version: 12
+          version: "12"
 
   release:
     jobs:
