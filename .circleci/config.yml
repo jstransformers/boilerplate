@@ -1,5 +1,16 @@
 version: 2.1
 
+refs:
+  - &only_master
+    filters:
+      branches:
+        only: master
+
+  - &not_master
+    filters:
+      branches:
+        ignore: master
+
 workflows:
   test:
     jobs:
@@ -91,15 +102,3 @@ commands:
       - run:
           name: Release
           command: npx semantic-release
-
-refs:
-  - &only_master
-    filters:
-      branches:
-        only: master
-
-  - &not_master
-    filters:
-      branches:
-        ignore: master
-
