@@ -81,6 +81,7 @@ commands:
   setup:
     description: "Checkout and install dependencies"
     steps:
+      - checkout
       - run:
           name: Versions
           command: node -v && npm -v && yarn -v
