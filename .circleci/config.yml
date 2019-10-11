@@ -54,11 +54,11 @@ workflows:
           <<: *only_master
     jobs:
       - unit-tests:
-          version: 8
+          version: "8"
       - unit-tests:
-          version: 10
+          version: "10"
       - unit-tests:
-          version: 12
+          version: "12"
 jobs:
   unit-tests:
     parameters:
