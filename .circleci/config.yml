@@ -75,6 +75,7 @@ jobs:
     steps:
       - setup
       - test
+      - publish-dry-run
 
   publish:
     docker:
@@ -101,6 +102,11 @@ commands:
           name: Test
           command: yarn test
 
+  publish-dry-run:
+    steps:
+      - run:
+          name: Release (Dry Run)
+          command: npx semantic-release --dry-run
   publish:
     steps:
       - run:
