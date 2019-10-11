@@ -90,7 +90,7 @@ commands:
     steps:
       - checkout
       - run:
-          name: node-ersions
+          name: Versions
           command: node -v && npm -v && yarn -v
       - run:
           name: Install Dependencies
