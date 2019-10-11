@@ -16,39 +16,39 @@ workflows:
     jobs:
       - unit-tests:
           <<: *not_master
-          name: v8
+          name: node-8
           version: "8"
       - unit-tests:
           <<: *not_master
-          name: v10
+          name: node-10
           version: "10"
       - unit-tests:
           <<: *not_master
-          name: v12
+          name: node-12
           version: "12"
 
   release:
     jobs:
       - unit-tests:
           <<: *only_master
-          name: v8
+          name: node-8
           version: "8"
       - unit-tests:
           <<: *only_master
-          name: v10
+          name: node-10
           version: "10"
       - unit-tests:
           <<: *only_master
-          name: v12
+          name: node-12
           version: "12"
 
       - publish:
           <<: *only_master
           context: master
           requires:
-            - v8
-            - v10
-            - v12
+            - node-8
+            - node-10
+            - node-12
 
   monthly:
     triggers:
@@ -57,13 +57,13 @@ workflows:
           <<: *only_master
     jobs:
       - unit-tests:
-          name: v8
+          name: node-8
           version: "8"
       - unit-tests:
-          name: v10
+          name: node-10
           version: "10"
       - unit-tests:
-          name: v12
+          name: node-12
           version: "12"
 jobs:
   unit-tests:
@@ -89,7 +89,7 @@ commands:
     steps:
       - checkout
       - run:
-          name: Versions
+          name: node-ersions
           command: node -v && npm -v && yarn -v
       - run:
           name: Install Dependencies
