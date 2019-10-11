@@ -1,0 +1,105 @@
+version: 2.1
+
+workflows:
+  test:
+    jobs:
+      - unit-tests:
+          <<: *not_master
+          version: 8
+      - unit-tests:
+          <<: *not_master
+          version: 10
+      - unit-tests:
+          <<: *not_master
+          version: 12
+
+  release:
+    jobs:
+      - unit-tests:
+          <<: *only_master
+          name: v8
+          version: 8
+      - unit-tests:
+          <<: *only_master
+          name: v10
+          version: 10
+      - unit-tests:
+          <<: *only_master
+          name: v12
+          version: 12
+
+      - publish:
+          <<: *only_master
+          context: master
+          requires:
+            - v8
+            - v10
+            - v12
+
+  monthly:
+    triggers:
+      - schedule:
+          cron: '0 0 1 * *'
+          <<: *only_master
+    jobs:
+      - unit-tests:
+          version: 8
+      - unit-tests:
+          version: 10
+      - unit-tests:
+          version: 12
+jobs:
+  unit-tests:
+    parameters:
+      version:
+        type: string
+    docker:
+      - image: circleci/node:<< parameters.version >>
+    steps:
+      - setup
+      - test
+
+  publish:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - setup
+      - publish
+
+commands:
+  setup:
+    description: "Checkout and install dependencies"
+    steps:
+      - run:
+          name: Versions
+          command: node -v && npm -v && yarn -v
+      - run:
+          name: Install Dependencies
+          command: yarn install --pure-lockfile
+
+  test:
+    steps:
+      - run:
+          name: Test
+          command: yarn test
+
+  publish:
+    steps:
+      - run:
+          name: NPM Auth
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run:
+          name: Release
+          command: npx semantic-release
+
+refs:
+  - &only_master
+    filters:
+      branches:
+        only: master
+
+  - &not_master
+    filters:
+      branches:
+        ignore: master
+
