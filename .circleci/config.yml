@@ -16,12 +16,15 @@ workflows:
     jobs:
       - unit-tests:
           <<: *not_master
+          name: v8
           version: "8"
       - unit-tests:
           <<: *not_master
+          name: v10
           version: "10"
       - unit-tests:
           <<: *not_master
+          name: v12
           version: "12"
 
   release:
@@ -54,10 +57,13 @@ workflows:
           <<: *only_master
     jobs:
       - unit-tests:
+          name: v8
           version: "8"
       - unit-tests:
+          name: v10
           version: "10"
       - unit-tests:
+          name: v12
           version: "12"
 jobs:
   unit-tests:
