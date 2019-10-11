@@ -42,6 +42,16 @@ workflows:
           name: node-12
           version: "12"
 
+      - publish-dry-run:
+          <<: *only_master
+          context: master
+
+      - publish-approval:
+          type: approval
+          context: master
+          requires:
+            - publish-dry-run
+
       - publish:
           <<: *only_master
           context: master
@@ -49,6 +59,7 @@ workflows:
             - node-8
             - node-10
             - node-12
+            - publish-approval
 
   monthly:
     triggers:
@@ -75,6 +86,12 @@ jobs:
     steps:
       - setup
       - test
+
+  publish-dry-run:
+    docker:
+      - image: circleci/node:12
+    steps:
+      - setup
       - publish-dry-run
 
   publish:
@@ -107,6 +124,7 @@ commands:
       - run:
           name: Release (Dry Run)
           command: npx semantic-release --dry-run
+
   publish:
     steps:
       - run:
