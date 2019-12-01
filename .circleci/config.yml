@@ -108,16 +108,16 @@ commands:
       - checkout
       - run:
           name: Versions
-          command: node -v && npm -v && yarn -v
+          command: node -v && npm -v
       - run:
           name: Install Dependencies
-          command: yarn install --pure-lockfile
+          command: npm install
 
   test:
     steps:
       - run:
           name: Test
-          command: yarn test
+          command: npm test
 
   publish-dry-run:
     steps:

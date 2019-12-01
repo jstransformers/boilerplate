@@ -34,8 +34,8 @@ Please feel free to submit pull requests for any feature requests, bug fixes etc
 
 To test your code locally:
 
-- `yarn install` - install dependencies
-- `yarn test` - runs tests
+- `npm install` - install dependencies
+- `npm test` - runs tests
 
 Your PR title should begin with:
 
