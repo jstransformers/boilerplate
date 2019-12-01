@@ -26,6 +26,10 @@ workflows:
           <<: *not_master
           name: node-12
           version: "12"
+      - unit-tests:
+          <<: *not_master
+          name: node-13
+          version: "13"
 
   release:
     jobs:
@@ -41,6 +45,10 @@ workflows:
           <<: *only_master
           name: node-12
           version: "12"
+      - unit-tests:
+          <<: *not_master
+          name: node-13
+          version: "13"
 
       - publish-dry-run:
           <<: *only_master
