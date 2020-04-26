@@ -1,6 +1,6 @@
 {
   "name": "jstransformer-foo",
-  "version": "0.0.0",
+  "private": true,
   "description": "Foo support for JSTransformers.",
   "keywords": [
     "jstransformer"
@@ -17,7 +17,7 @@
     "posttest": "xo --space=2 --no-semicolon index.js"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=8"
   },
   "repository": {
     "type": "git",
