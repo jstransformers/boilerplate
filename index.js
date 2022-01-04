@@ -1,9 +1,10 @@
-'use strict'
-
-exports.name = 'foo'
-exports.inputFormats = ['foo', 'foobar']
-exports.outputFormat = 'html'
-
-exports.render = function (str) {
-  return str
+const transformer = {
+  name: 'foo',
+  inputFormats: ['foo', 'foobar'],
+  outputFormat: 'html',
+  render(contents) {
+    return contents
+  },
 }
+
+module.exports = transformer
