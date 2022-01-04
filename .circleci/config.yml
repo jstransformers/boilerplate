@@ -85,6 +85,13 @@ workflows:
           name: node-12
           version: "12"
 jobs:
+  lint:
+    docker:
+      - image: circleci/node:16
+    steps:
+      - setup
+      - lint
+
   unit-tests:
     parameters:
       version:
@@ -120,6 +127,12 @@ commands:
       - run:
           name: Install Dependencies
           command: npm install
+  
+  lint:
+    steps:
+      - run:
+          name: Lint
+          command: npm run lint
 
   test:
     steps:
